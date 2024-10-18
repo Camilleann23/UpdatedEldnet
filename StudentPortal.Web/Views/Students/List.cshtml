@@ -1,0 +1,41 @@
+﻿@model List<StudentPortal.Web.Models.Entities.Student>
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Students List</h1>
+
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>FName</th>
+                <th>LName</th>
+                <th>Course</th>
+                <th>Year</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var student in Model)
+            {
+                <tr>
+                    <td>@student.ID</td>
+                    <td>@student.FName</td>
+                    <td>@student.LName</td>
+                    <td>@student.Course</td>
+                    <td>@student.Year</td>
+                    <td>@student.Status</td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" asp-controller="Students" asp-action="Edit" asp-route-ID="@student.ID">Edit</a>
+                        <form method="post" asp-controller="Students" asp-action="Delete" style="display:inline;">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="id" value="@student.ID" />
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this student?');">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

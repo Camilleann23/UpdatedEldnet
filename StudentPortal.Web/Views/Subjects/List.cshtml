@@ -1,0 +1,49 @@
+﻿@model List<StudentPortal.Web.Models.Entities.Subject>
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Subjects List</h1>
+
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>SubjectCode</th>
+                <th>SubjectName</th>
+                <th>Description</th>
+                <th>Units</th>
+                <th>Offering</th>
+                <th>Category</th>
+                <th>CourseCode</th>
+                <th>CurriculumYear</th>
+                <th>Requisite</th>
+                <th>Actions</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var subject in Model)
+            {
+                <tr>
+                    <td>@subject.SubjectCode</td>
+                    <td>@subject.SubjectName</td>
+                    <td>@subject.Description</td>
+                    <td>@subject.Units</td>
+                    <td>@subject.Offering</td>
+                    <td>@subject.Category</td>
+                    <td>@subject.CourseCode</td>
+                    <td>@subject.CurriculumYear</td>
+                    <td>@subject.Requisite</td>
+
+                    <td>
+                        <a class="btn btn-primary btn-sm" asp-controller="Subjects" asp-action="Edit" asp-route-ID="@subject.SubjectCode">Edit</a>
+                        <form method="post" asp-controller="Subjects" asp-action="Delete" style="display:inline;">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="SubjectCode" value="@subject.SubjectCode" />
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this subject?');">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
