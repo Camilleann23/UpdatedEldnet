@@ -6,13 +6,14 @@
     <table class="table table-striped table-hover">
         <thead class="table-dark">
             <tr>
+                <th>EDPCode</th>
                 <th>SubjectCode</th>
                 <th>Description</th>
                 <th>Section</th>
                 <th>StartTime</th>
                 <th>EndTime</th>
                 <th>Days</th>
-                <th>AMPM</th>
+                <th></th>
                 <th>Room</th>
                 <th>CurriculumYear</th>
 
@@ -24,23 +25,23 @@
             @foreach (var schedule in Model)
             {
                 <tr>
+                    <td>@schedule.EDPCode</td>
                     <td>@schedule.SubjectCode</td>
                     <td>@schedule.Description</td>
                     <td>@schedule.Section</td>
                     <td>@schedule.StartTime</td>
                     <td>@schedule.EndTime</td>
                     <td>@schedule.Days</td>
-                    <td>@schedule.AMPM</td>
                     <td>@schedule.Room</td>
                     <td>@schedule.CurriculumYear</td>
 
 
 
                     <td>
-                        <a class="btn btn-primary btn-sm" asp-controller="Schedule" asp-action="Edit" asp-route-ID="@schedule.SubjectCode">Edit</a>
+                        <a class="btn btn-primary btn-sm" asp-controller="Schedule" asp-action="Edit" asp-route-ID="@schedule.EDPCode">Edit</a>
                         <form method="post" asp-controller="Schedule" asp-action="Delete" style="display:inline;">
                             @Html.AntiForgeryToken()
-                            <input type="hidden" name="SubjectCode" value="@schedule.SubjectCode" />
+                            <input type="hidden" name="SubjectCode" value="@schedule.EDPCode" />
                             <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this subject?');">Delete</button>
                         </form>
                     </td>

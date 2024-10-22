@@ -89,6 +89,12 @@
                     <form method="post" action="@Url.Action("Edit", "Schedule")">
                         <input type="hidden" asp-for="SubjectCode" />
 
+                        <!-- EDP Code -->
+                        <div class="mb-3">
+                            <label for="EDPCode" class="form-label">EDPCode</label>
+                            <input type="number" class="form-control" id="SubjectCode" placeholder="Enter EDPCode" asp-for="EDPCode" required>
+                            <span asp-validation-for="EDPCode" class="text-danger"></span>
+                        </div>
 
                         <!-- Subject Code -->
                         <div class="mb-3">
@@ -132,17 +138,7 @@
                             <span asp-validation-for="Days" class="text-danger"></span>
                         </div>
 
-                        <!-- AM/PM Dropdown -->
-                        <div class="mb-3">
-                            <label for="AMPM" class="form-label">AM/PM</label>
-                            <select class="form-select" id="AMPM" asp-for="AMPM">
-                                <option value="">-- Select Time Period --</option>
-                                <option value="AM">AM</option>
-                                <option value="PM">PM</option>
-                            </select>
-                            <span asp-validation-for="AMPM" class="text-danger"></span>
-                        </div>
-
+                     
                         <!-- Room -->
                         <div class="mb-3">
                             <label for="Room" class="form-label">Room</label>

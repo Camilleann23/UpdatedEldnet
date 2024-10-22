@@ -30,13 +30,13 @@ namespace StudentPortal.Web.Controllers
 
                 var schedule = new Schedule
                 {
+                    EDPCode = viewModel.EDPCode,
                     SubjectCode = viewModel.SubjectCode,
                     Description = viewModel.Description,
                     Section = viewModel.Section,
                     StartTime = viewModel.StartTime,
                     EndTime = viewModel.EndTime,
                     Days = viewModel.Days,
-                    AMPM = viewModel.AMPM,
                     Room = viewModel.Room,
                     CurriculumYear = viewModel.CurriculumYear
 
@@ -77,14 +77,13 @@ namespace StudentPortal.Web.Controllers
                 var schedule = await dbContext.Schedule.FindAsync(viewModel.SubjectCode);
                 if (schedule != null)
                 {
-
+                    schedule.EDPCode = viewModel.EDPCode;
                     schedule.SubjectCode = viewModel.SubjectCode;
                     schedule.Description = viewModel.Description;
                     schedule.Section = viewModel.Section;
                     schedule.StartTime = viewModel.StartTime;
                     schedule.EndTime = viewModel.EndTime;
                     schedule.Days = viewModel.Days;
-                    schedule.AMPM = viewModel.AMPM;
                     schedule.Room = viewModel.Room;
                     schedule.CurriculumYear = viewModel.CurriculumYear;
 

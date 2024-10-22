@@ -5,8 +5,11 @@ namespace StudentPortal.Web.Models.Entities
     public class Schedule
     {
         [Key]
+        [Required(ErrorMessage = "EDPCode  is required")]
+        public int EDPCode { get; set; }
+
         [Required(ErrorMessage = "Subject Code is required")]
-        public int SubjectCode { get; set; }
+        public string SubjectCode { get; set; }
 
         [Required(ErrorMessage = "Description is required")]
         [StringLength(100, ErrorMessage = "Description cannot exceed 100 characters")]
@@ -30,10 +33,7 @@ namespace StudentPortal.Web.Models.Entities
         [RegularExpression(@"^[a-zA-Z\s]+$", ErrorMessage = "Days can only contain letters.")]
         public string Days { get; set; }
 
-        [Required(ErrorMessage = "AM/PM selection is required")]
-        [RegularExpression("(AM|PM)", ErrorMessage = "Please select either AM or PM")]
-        public string AMPM { get; set; }
-
+       
         [Required(ErrorMessage = "Room number is required")]
         [RegularExpression(@"^\d+$", ErrorMessage = " must be a number.")]
         public string Room { get; set; }

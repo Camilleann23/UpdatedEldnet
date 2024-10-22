@@ -6,13 +6,7 @@ namespace StudentPortal.Web.Models
     public class AddSubjectViewModel
     {
         [Required(ErrorMessage = "Subject Code is required.")]
-        [RegularExpression(@"^\d+$", ErrorMessage = "Subject Code must be a number.")]
-        public int SubjectCode { get; set; }
-
-        [Required(ErrorMessage = "Subject Name is required.")]
-        [RegularExpression(@"^[a-zA-Z0-9\s]+$", ErrorMessage = "Subject Name can only contain letters and numbers.")]
-        [StringLength(100, ErrorMessage = "Subject Name cannot be longer than 100 characters.")]
-        public string SubjectName { get; set; }
+        public string SubjectCode { get; set; }
 
         [Required(ErrorMessage = "Description is required.")]
         [RegularExpression(@"^[a-zA-Z\s]+$", ErrorMessage = "Description can only contain letters.")]

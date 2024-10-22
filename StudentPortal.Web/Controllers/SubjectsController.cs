@@ -31,7 +31,6 @@ namespace StudentPortal.Web.Controllers
                 var subject = new Subject
                 {
                     SubjectCode = viewModel.SubjectCode,
-                    SubjectName = viewModel.SubjectName,
                     Description = viewModel.Description,
                     Units = viewModel.Units,
                     Offering = viewModel.Offering,
@@ -39,12 +38,10 @@ namespace StudentPortal.Web.Controllers
                     CourseCode = viewModel.CourseCode,
                     CurriculumYear = viewModel.CurriculumYear,
                     Requisite = viewModel.Requisite
-
-
                 };
+
                 await dbContext.Subjects.AddAsync(subject);
                 await dbContext.SaveChangesAsync();
-
                 await dbContext.Database.ExecuteSqlRawAsync($"SET IDENTITY_INSERT Subjects OFF");
 
                 await transaction.CommitAsync();
@@ -52,9 +49,9 @@ namespace StudentPortal.Web.Controllers
                 return RedirectToAction("List", "Subjects");
             }
 
-
             return View(viewModel);
         }
+
 
         [HttpGet]
         public async Task<IActionResult> List()
@@ -79,7 +76,6 @@ namespace StudentPortal.Web.Controllers
                 if (subject != null)
                 {
                     subject.SubjectCode = viewModel.SubjectCode;
-                    subject.SubjectName = viewModel.SubjectName;
                     subject.Description = viewModel.Description;
                     subject.Units = viewModel.Units;
                     subject.Offering = viewModel.Offering;

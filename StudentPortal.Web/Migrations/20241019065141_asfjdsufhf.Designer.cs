@@ -12,8 +12,8 @@ using StudentPortal.Web.Data;
 namespace StudentPortal.Web.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241012034255_kapoy")]
-    partial class kapoy
+    [Migration("20241019065141_asfjdsufhf")]
+    partial class asfjdsufhf
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,6 +33,10 @@ namespace StudentPortal.Web.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SubjectCode"));
 
+                    b.Property<string>("AMPM")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("CurriculumYear")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -43,13 +47,15 @@ namespace StudentPortal.Web.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<TimeSpan>("EndTime")
                         .HasColumnType("time");
 
-                    b.Property<int>("Room")
-                        .HasColumnType("int");
+                    b.Property<string>("Room")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Section")
                         .IsRequired()
@@ -97,11 +103,8 @@ namespace StudentPortal.Web.Migrations
 
             modelBuilder.Entity("StudentPortal.Web.Models.Entities.Subject", b =>
                 {
-                    b.Property<int>("SubjectCode")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SubjectCode"));
+                    b.Property<string>("SubjectCode")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Category")
                         .IsRequired()
@@ -131,11 +134,6 @@ namespace StudentPortal.Web.Migrations
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("SubjectName")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
 
                     b.Property<int>("Units")
                         .HasColumnType("int");
